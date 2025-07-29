@@ -1,8 +1,8 @@
 const path = require('path')
 module.exports = {
   version: "3.7",
-  title: "SongGeneration.git",
-  description: "",
+  title: "SongGeneration",
+  description: "Generate music in different genres using text and audio prompts.",
   icon: "icon.png",
   menu: async (kernel, info) => {
     let installed = info.exists("app/env")

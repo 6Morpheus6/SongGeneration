@@ -1,6 +1,5 @@
 module.exports = {
   run: [
-    // Edit this step to customize the git repository to use
     {
       method: "shell.run",
       params: {
@@ -9,31 +8,38 @@ module.exports = {
         ]
       }
     },
-    // Delete this step if your project does not use torch
+    {
+      method: "shell.run",
+      params: {
+        venv: "env",
+        path: "app",
+        message: [
+          "uv pip install gradio==5.0.0 pydantic==2.10.6",
+          "uv pip install -r requirements.txt",
+          "uv pip install -r requirements_nodeps.txt --no-deps"
+        ]
+      }
+    },
     {
       method: "script.start",
       params: {
         uri: "torch.js",
         params: {
-          venv: "env",                // Edit this to customize the venv folder path
-          path: "app",                // Edit this to customize the path to start the shell from
-          // xformers: true   // uncomment this line if your project requires xformers
-          // triton: true   // uncomment this line if your project requires triton
-          // sageattention: true   // uncomment this line if your project requires sageattention
+          venv: "env",
+          path: "app",
+          // xformers: true,
+          // triton: true,
+          // sageattention: true
         }
       }
     },
-    // Edit this step with your custom install commands
     {
-      method: "shell.run",
+      method: "hf.download",
       params: {
-        venv: "env",                // Edit this to customize the venv folder path
-        path: "app",                // Edit this to customize the path to start the shell from
-        message: [
-          "uv pip install gradio devicetorch",
-          "uv pip install -r requirements.txt"
-        ]
+        "_": [ "tencent/SongGeneration" ],
+        "exclude": '"LICENSE" "*.md" ".gitattributes"',
+        "local-dir": "app",
       }
-    },
+    }
   ]
 }
