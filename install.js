@@ -14,7 +14,7 @@ module.exports = {
         venv: "env",
         path: "app",
         message: [
-          "uv pip install gradio==5.0.0 pydantic==2.10.6",
+          "uv pip install hf-xet gradio==5.0.0 pydantic==2.10.6",
           "uv pip install -r requirements.txt",
           "uv pip install -r requirements_nodeps.txt --no-deps"
         ]
