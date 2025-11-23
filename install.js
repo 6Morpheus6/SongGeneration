@@ -34,11 +34,9 @@ module.exports = {
       }
     },
     {
-      method: "hf.download",
+      method: "shell.run",
       params: {
-        "_": [ "tencent/SongGeneration" ],
-        "exclude": '"LICENSE" "*.md" ".gitattributes"',
-        "local-dir": "app",
+        message: 'hf download tencent/SongGeneration --local-dir=./app --exclude="LICENSE" --exclude="*.md" --exclude=".gitattributes"'
       }
     }
   ]
