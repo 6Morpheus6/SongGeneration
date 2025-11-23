@@ -1,6 +1,6 @@
 module.exports = {
   run: [
-    // windows nvidia 50 series
+    // windows nvidia
     {
       "when": "{{platform === 'win32' && gpu === 'nvidia'}}",
       "method": "shell.run",
@@ -58,8 +58,9 @@ module.exports = {
         "path": "{{args && args.path ? args.path : '.'}}",
         "message": [
           "uv pip install torch==2.7.0 torchvision==0.22.0 torchaudio==2.7.0 {{args && args.xformers ? 'xformers' : ''}} --index-url https://download.pytorch.org/whl/cu128 --force-reinstall --no-deps",
-          "uv pip install https://github.com/6Morpheus6/SongGeneration/releases/download/v2.7.4/flash_attn-2.7.4.post1+cu128torch2.7.0cxx11abiFALSE-cp310-cp310-linux_x86_64.whl --force-reinstall --no-deps",
-          "{{args && args.sageattention ? 'uv pip install git+https://github.com/thu-ml/SageAttention.git' : ''}}"
+          "uv pip install https://github.com/6Morpheus6/SongGeneration/releases/download/v2.7.4/flash_attn-2.7.4.post1+cu128torch2.7.0cxx11abiFALSE-cp310-cp310-linux_x86_64.whl --force-reinstall",
+          "{{args && args.sageattention ? 'uv pip install git+https://github.com/thu-ml/SageAttention.git' : ''}}",
+          "uv pip install numpy==1.26.4"
         ]
       },
       "next": null
